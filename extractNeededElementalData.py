@@ -47,7 +47,11 @@ def findElementsAndValues(elements_to_find, compounds):
                         break
                     # has found a number value after the element
                     elif compound[location + 1].isdigit():
-                        if compound[location + 2].isdigit():
+                        if compound[location + 2].isdigit() and compound[location + 3].isdigit():
+                            #set value to the three digit number
+                            line_elementCounts.append(float(compound[location + 1: location + 4]))
+                            break
+                        elif compound[location + 2].isdigit():
                             #set value to the two digit number
                             line_elementCounts.append(float(compound[location + 1: location + 3]))
                             break
