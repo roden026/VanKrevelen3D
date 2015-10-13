@@ -66,56 +66,9 @@ for i in listByN:
         else:
             withoutN = plt.scatter(j[0], j[1], 15.0, j[2], j[3], alpha = .25)
     counter += 1
-'''
-colorList = []
-markerList = []
-for r in ratiosList[2]:
-    if r:
-        colorList.append('y')
-        markerList.append('^')
-    else:
-        colorList.append('b')
-        markerList.append('o')
-        
-marker = itertools.cycle(markerList)
-    
-ax.scatter(ratiosList[1], ratiosList[0], area, colorList, marker = marker.next(), alpha = .25)
-ax.axis([0, 1.25, 0, 2.5])
-'''
+
 
 plt.legend((withN, withoutN), ('Does have N', 'Does not have N'), scatterpoints = 1, loc='lower left', ncol=1,fontsize = 9)
 plt.show()
 
-
-'''
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-fig = plt.figure()
-fig.suptitle('3D Van Krevelen Diagram', fontsize = 14, fontweight = 'bold')
-
-ax = fig.add_subplot(111, projection='3d')
-ax.set_xlabel('O:C Ratio')
-ax.set_ylabel('H:C Ratio')
-ax.set_zlabel('N:C Ratio')
-
-ax.scatter(ratiosList[1], ratiosList[0], ratiosList[2], zdir=u'z', s = 20)
-plt.show()
-'''
-
-'''
-area = 10.0
-
-fig = plt.figure()
-fig.suptitle('Van Krevelen Diagram', fontsize=14, fontweight='bold')
-ax = fig.add_subplot(111)
-fig.subplots_adjust(top=0.85)
-
-ax.set_xlabel('O:C Ratio')
-ax.set_ylabel('H:C Ratio')
-
-ax.scatter(ratiosList[1], ratiosList[0], s=area, alpha = .25)
-ax.axis([0, 1.25, 0, 2.5])
-
-plt.show()
-'''
 print("done")
