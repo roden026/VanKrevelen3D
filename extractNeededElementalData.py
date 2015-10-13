@@ -24,7 +24,7 @@ def extractNeededElementalData(csv_output_file_name):
 
     # close up file being used
     f.close()
-    print elementalList
+
     return elementalList
 
 # Note, this current format only works for 1 letter elements which works fine for H,C, and O
@@ -35,16 +35,17 @@ def findElementsAndValues(elements_to_find, compounds):
         line_elementCounts = []
         for e in elements_to_find:
             j = 0
+            found = False
             for c in compound:
                 if c == e:
+                    found = True
                     location = j
                     # sets element value equal to 1 because next char in compound is another element
-                    if compound[location + 1].isupper():
+                    if compound[location + 1].isupper() or compound[location + 1].isspace():
                         line_elementCounts.append(1.0)
                         break
-                    # breaks from looping through that string because it has hit a the end of the compound
-                    elif compound[location + 1].isspace():
-                        break
+                    elif compound[location + 1].islower():
+                        found = False
                     # has found a number value after the element
                     elif compound[location + 1].isdigit():
                         if compound[location + 2].isdigit() and compound[location + 3].isdigit():
@@ -60,6 +61,10 @@ def findElementsAndValues(elements_to_find, compounds):
                             line_elementCounts.append(float(compound[location + 1]))
                             break
                 j += 1
+
+            if found == False:
+                line_elementCounts.append(0)
+            
         complete_elementCounts.append(line_elementCounts)
 
     return complete_elementCounts
