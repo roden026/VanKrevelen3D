@@ -15,9 +15,6 @@ def processElementalData(elementalList):
                 ratiosList[2].append(False)
             else:
                 ratiosList[2].append(True)
-	else:
-            print line
-
        			
     return ratiosList
 
